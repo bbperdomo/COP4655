@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        
+
         //volley request
         RequestQueue queue = Volley.newRequestQueue(this);
         String url="";
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                             weatherData.lat = json.getJSONObject("coord").getString("lat");
                             weatherData.lon = json.getJSONObject("coord").getString("lon");
 
-                            jsonSuccess.setText("Request successful");
+                            jsonSuccess.setText("Success! Please click Results");
                         } catch (Exception e) {
                             System.out.println("Couldn't parse json");
                         }
@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                jsonSuccess.setText("Request unsuccessful");
+                jsonSuccess.setText("Error, request failed. Please try again");
             }
         });
 
