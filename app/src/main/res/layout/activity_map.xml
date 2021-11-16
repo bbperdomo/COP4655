@@ -37,6 +37,5 @@
         android:gravity="center_horizontal"
         android:text="Bryan Perdomo - Z23386688"
         android:textAlignment="center"
-        android:textColor="@color/design_default_color_error"
         android:layout_alignParentLeft="true" />
 </RelativeLayout>
