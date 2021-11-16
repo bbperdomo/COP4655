@@ -15,4 +15,5 @@ public class WeatherData implements Serializable {
     public String windDeg;
     public String lat;
     public String lon;
+    
 }
