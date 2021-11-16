@@ -26,7 +26,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private final int REQ_CODE = 100;
@@ -73,5 +72,155 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(mainActivity);
+                        break;
+                    case R.id.action_results:
+                        Intent results = new Intent(getApplicationContext(), Results.class);
+                        startActivity(results);
+                        break;
+                    case R.id.action_map:
+                        Intent map = new Intent(getApplicationContext(), Map.class);
+                        startActivity(map);
+                        break;
+                    case R.id.action_history:
+                        Intent history = new Intent(getApplicationContext(), History.class);
+                        startActivity(history);
+                        break;
+                }
+                return true;
+            }
+        });
+    }
 
-        
+    //handles city click event
+    public void cityBtn(View view) {
+        fromGPSBtn=false;
+        city = inputField.getText().toString();
+
+        getLocation(11111111,0,city);
+    }
+
+    //location button event
+    public void gpsBtn(View view) {
+        fromGPSBtn=true;
+        try {
+            if (ActivityCompat.checkSelfPermission(this, mPermission) != getPackageManager().PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this, new String[]{mPermission},
+                        REQUEST_CODE_PERMISSION);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        gps = new GPSTracker(MainActivity.this);
+
+        // check if GPS enabled
+        if(gps.canGetLocation()){
+            boolean permissionAsking=true;
+            while(permissionAsking) {
+                if(ActivityCompat.checkSelfPermission(getApplication(),
+                        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplication(),
+                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    permissionAsking=true;
+                } else {
+                    permissionAsking=false;
+                }
+            }
+            if(!gpsGood) {
+                gpsGood = true;
+                gpsBtn(view);
+            }
+            getLocation(gps.getLatitude(),gps.getLongitude(),"NoCity");
+        } else{
+            gps.showSettingsAlert();
+        }
+    }
+
+    //call to calculate user location
+    public void getLocation(double lat, double lon, String city) {
+        String keyword="";
+        if(lat==11111111) {
+            if(city.length()!=0) {
+                if (isInteger(city)) {
+                    keyword="zip=";
+                } else {
+                    keyword="q=";
+                }
+            }
+        }
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url="";
+        if(city!="NoCity")
+            url=link+keyword+city;
+        else
+            url=link+"lat="+lat+"&lon="+lon;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            weatherData = new WeatherData();
+                            weatherData.city = json.getString("name");
+                            weatherData.temperature = json.getJSONObject("main").getString("temp");
+                            weatherData.tempFeels = json.getJSONObject("main").getString("feels_like");
+                            weatherData.minTemp = json.getJSONObject("main").getString("temp_min");
+                            weatherData.maxTemp = json.getJSONObject("main").getString("temp_max");
+                            weatherData.cloudiness = json.getJSONArray("weather").getJSONObject(0).getString("main");
+                            weatherData.pressure = json.getJSONObject("main").getString("pressure");
+                            weatherData.humidity = json.getJSONObject("main").getString("humidity");
+                            weatherData.windSpeed = json.getJSONObject("wind").getString("speed");
+                            weatherData.windDeg = json.getJSONObject("wind").getString("deg");
+                            weatherData.lat = json.getJSONObject("coord").getString("lat");
+                            weatherData.lon = json.getJSONObject("coord").getString("lon");
+
+                            jsonSuccess.setText("Request successful");
+                        } catch (Exception e) {
+                            System.out.println("Couldn't parse json");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                jsonSuccess.setText("Request unsuccessful");
+            }
+        });
+
+        queue.add(stringRequest);
+    }
+
+    public boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        }
+        catch( Exception e ) {
+            return false;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQ_CODE: {
+                if (resultCode == RESULT_OK && data != null) {
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    inputField.setText(result.get(0));
+                }
+                break;
+            }
+        }
+    }
+}
+
+
