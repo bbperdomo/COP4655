@@ -21,14 +21,14 @@
 
         <Button
             android:id="@+id/cityBtn"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:onClick="cityBtn"
             android:text="City or ZIP" />
 
         <Button
             android:id="@+id/gpsBtn"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:onClick="gpsBtn"
             android:text="GPS" />
