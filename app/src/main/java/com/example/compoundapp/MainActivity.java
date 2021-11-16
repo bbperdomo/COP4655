@@ -156,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        
+        //volley request
         RequestQueue queue = Volley.newRequestQueue(this);
         String url="";
         if(city!="NoCity")
