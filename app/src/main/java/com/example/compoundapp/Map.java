@@ -48,7 +48,10 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
                         Intent map = new Intent(getApplicationContext(), Map.class);
                         startActivity(map);
                         break;
-                    
+                    case R.id.action_history:
+                        Intent history = new Intent(getApplicationContext(), History.class);
+                        startActivity(history);
+                        break;
                 }
                 return true;
             }
