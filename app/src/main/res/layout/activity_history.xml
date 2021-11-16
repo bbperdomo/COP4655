@@ -18,35 +18,35 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:dividerHeight="-30dp" />
+            android:dividerHeight="-35dp" />
 
         <ListView
             android:id="@+id/day2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:dividerHeight="-30dp" />
+            android:dividerHeight="-35dp" />
 
         <ListView
             android:id="@+id/day3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:dividerHeight="-30dp" />
+            android:dividerHeight="-35dp" />
 
         <ListView
             android:id="@+id/day4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:dividerHeight="-30dp" />
+            android:dividerHeight="-35dp" />
 
         <ListView
             android:id="@+id/day5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:dividerHeight="-30dp" />
+            android:dividerHeight="-35dp" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
