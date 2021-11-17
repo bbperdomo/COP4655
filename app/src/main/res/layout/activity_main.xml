@@ -71,7 +71,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
-        android:text="Bryan Perdomo - Z23386688"
+        android:text="Bruh"
         android:textAlignment="center"
         android:layout_alignParentLeft="true" />
 
