@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final TextView mic = (TextView) findViewById(R.id.mic);
+
         jsonSuccess = findViewById(R.id.jsonSuccess);
         jsonSuccess.setText("");
 
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
