@@ -151,7 +151,7 @@ public class History extends AppCompatActivity {
                             try {
                                 JSONObject json = new JSONObject(response);
                                 list4.add("Day 4");
-                                list4.add("Temperature: "+json.getJSONObject("current").getString("temp")+" degrees F");
+                                list4.add("Temperature: "+json.getJSONObject("current").getString("temp")+"F");
                                 list4.add("Weather: "+json.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main"));
                                 list4.add("Humidity: "+json.getJSONObject("current").getString("humidity")+"%");
                                 arrayAdapter4.clear();

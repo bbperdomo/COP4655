@@ -69,10 +69,10 @@ public class Results extends AppCompatActivity {
             dataList = findViewById(R.id.weatherData);
             list2 = new ArrayList<>();
             list2.add(wd.city);
-            list2.add(wd.temperature + " degrees F");
-            list2.add(wd.tempFeels + " degrees F");
-            list2.add(wd.minTemp + " degrees F");
-            list2.add(wd.maxTemp + " degrees F");
+            list2.add(wd.temperature + "F");
+            list2.add(wd.tempFeels + "F");
+            list2.add(wd.minTemp + " F");
+            list2.add(wd.maxTemp + "F");
             list2.add(wd.cloudiness);
             list2.add(wd.pressure + " hpa");
             list2.add(wd.humidity + "%");
@@ -90,15 +90,18 @@ public class Results extends AppCompatActivity {
         l1_len = list1.size();
         int l2_len = list2.size();
         int i = 0;
-        list3 = new ArrayList<>(1000000);
+        list3 = new ArrayList<>();
 
         while (i < list1.size())
         {
             list3.add(list1.get(i));
+            list3.add(list2.get(i));
             i++;
         }
 
 
+        //This was the janky way I was going to do it. I was going to manually add each parameter in alternating fashion. Thank god
+        //I figured out the bug in my improved attempt... it was forgetting to increment the count variable inside the loop :/
 
 //        list3.add("City");
 //        list3.add(wd.city);
@@ -127,17 +130,6 @@ public class Results extends AppCompatActivity {
 //        list2.add(wd.lat + " lat, " + wd.lon + " lon");
 
 
-
-
-
-//        while (i < 10)
-//        {
-//            String list1_obj = list1.get(i);
-//            String list2_obj = list2.get(i);
-//            list3.add(list1_obj);
-//            list3.add(list2_obj);
-//
-//        }
 
 
 
