@@ -20,6 +20,8 @@ public class Results extends AppCompatActivity {
     public static WeatherData wd;
     public ArrayList<String> list1 = new ArrayList<>();
     public ArrayList<String> list2;
+    //holds alternating list
+    public ArrayList<String> list3;
 
     public TextToSpeech t1;
     public TextToSpeech t2;
@@ -39,6 +41,7 @@ public class Results extends AppCompatActivity {
         list1.add("Wind Direction");
         list1.add("Geolocation");
     }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +86,52 @@ public class Results extends AppCompatActivity {
             b2.setVisibility(View.VISIBLE);
         }
 
+        int l1_len = list1.size();
+        int l2_len = list2.size();
+        int i = 0;
+        list3 = new ArrayList<>();
+
+        list3.add("City");
+        list3.add(wd.city);
+
+//        list1.add("Temperature");
+//        list1.add("Feels Like");
+//        list1.add("Min Temperature");
+//        list1.add("Max Temperature");
+//        list1.add("Cloudiness");
+//        list1.add("Pressure");
+//        list1.add("Humidity");
+//        list1.add("Wind Speed");
+//        list1.add("Wind Direction");
+//        list1.add("Geolocation");
+//
+//
+//        list2.add(wd.temperature + " degrees F");
+//        list2.add(wd.tempFeels + " degrees F");
+//        list2.add(wd.minTemp + " degrees F");
+//        list2.add(wd.maxTemp + " degrees F");
+//        list2.add(wd.cloudiness);
+//        list2.add(wd.pressure + " hpa");
+//        list2.add(wd.humidity + "%");
+//        list2.add(wd.windSpeed + " mph");
+//        list2.add(wd.windDeg + " degrees");
+//        list2.add(wd.lat + " lat, " + wd.lon + " lon");
+
+
+
+
+
+//        while (i < 10)
+//        {
+//            String list1_obj = list1.get(i);
+//            String list2_obj = list2.get(i);
+//            list3.add(list1_obj);
+//            list3.add(list2_obj);
+//
+//        }
+
+
+
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             //Called to signal the completion of the TextToSpeech engine initialization.
@@ -105,15 +154,21 @@ public class Results extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String toSpeak = list1.toString();
+//                String toSpeak = list1.toString();
+//
+//                String twoSpeak = list2.toString();
 
-                String twoSpeak = list2.toString();
+//                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
+//                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+//
+//                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
+//                t2.speak(twoSpeak, TextToSpeech.QUEUE_FLUSH, null);
+
+                String toSpeak = list3.toString();
 
                 Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
                 t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
 
-                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
-                t2.speak(twoSpeak, TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
@@ -128,4 +183,6 @@ public class Results extends AppCompatActivity {
 //            }
 //        });
     }
+
+
 }
