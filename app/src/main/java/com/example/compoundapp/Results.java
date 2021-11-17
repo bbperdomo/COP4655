@@ -53,8 +53,8 @@ public class Results extends AppCompatActivity {
         ;
 
         b1 = findViewById(R.id.button1);
-        b2 = findViewById(R.id.button2);
-        b2.setVisibility(View.GONE);
+
+
 
         ListView headingsList = findViewById(R.id.weatherHeadings);
         ListView dataList;
@@ -83,7 +83,6 @@ public class Results extends AppCompatActivity {
             arrayAdapter2.addAll(list2);
             dataList.setAdapter(arrayAdapter2);
             dataList.setEnabled(false);
-            b2.setVisibility(View.VISIBLE);
         }
 
         int l1_len;
@@ -155,15 +154,6 @@ public class Results extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String toSpeak = list1.toString();
-//
-//                String twoSpeak = list2.toString();
-
-//                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
-//                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
-//
-//                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
-//                t2.speak(twoSpeak, TextToSpeech.QUEUE_FLUSH, null);
 
                 String toSpeak = list3.toString();
 

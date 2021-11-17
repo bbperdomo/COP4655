@@ -56,22 +56,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/resultsLayout"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="47dp"
-        android:text="Text to Speech" />
+        android:layout_centerInParent="true"
+        android:text="Text to Speech"
+        />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/resultsLayout"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="231dp"
-        android:layout_marginLeft="231dp"
-        android:layout_marginTop="47dp"
-        android:text="Text to Speech" />
+
 </RelativeLayout>
