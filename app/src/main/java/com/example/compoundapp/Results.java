@@ -86,13 +86,22 @@ public class Results extends AppCompatActivity {
             b2.setVisibility(View.VISIBLE);
         }
 
-        int l1_len = list1.size();
+        int l1_len;
+        l1_len = list1.size();
         int l2_len = list2.size();
         int i = 0;
-        list3 = new ArrayList<>();
+        list3 = new ArrayList<>(1000000);
 
-        list3.add("City");
-        list3.add(wd.city);
+        while (i < list1.size())
+        {
+            list3.add(list1.get(i));
+            i++;
+        }
+
+
+
+//        list3.add("City");
+//        list3.add(wd.city);
 
 //        list1.add("Temperature");
 //        list1.add("Feels Like");
