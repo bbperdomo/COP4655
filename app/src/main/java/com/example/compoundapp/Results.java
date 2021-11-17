@@ -85,20 +85,14 @@ public class Results extends AppCompatActivity {
 
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
+            //Called to signal the completion of the TextToSpeech engine initialization.
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.US);
                 }
             }
         });
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String toSpeak = list1.toString();
-                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
-                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
-            }
-        });
+
         t2 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -107,13 +101,31 @@ public class Results extends AppCompatActivity {
                 }
             }
         });
-        b2.setOnClickListener(new View.OnClickListener() {
+
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String toSpeak = list2.toString();
+                String toSpeak = list1.toString();
+
+                String twoSpeak = list2.toString();
+
                 Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
                 t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+
+                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
+                t2.speak(twoSpeak, TextToSpeech.QUEUE_FLUSH, null);
             }
         });
+
+
+        //I thought the two separate buttons and speech displays were redundant so I decided to try and combine them into one call and one button
+//        b2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String toSpeak = list2.toString();
+//                Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
+//                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+//            }
+//        });
     }
 }
