@@ -64,7 +64,7 @@ public class History extends AppCompatActivity {
                             try {
                                 JSONObject json = new JSONObject(response);
                                 list1.add("Day 1");
-                                list1.add("Temperature: "+json.getJSONObject("current").getString("temp")+" degrees F");
+                                list1.add("Temperature: "+json.getJSONObject("current").getString("temp")+"F");
                                 list1.add("Weather: "+json.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main"));
                                 list1.add("Humidity: "+json.getJSONObject("current").getString("humidity")+"%");
                                 arrayAdapter1.clear();
@@ -122,7 +122,7 @@ public class History extends AppCompatActivity {
                             try {
                                 JSONObject json = new JSONObject(response);
                                 list3.add("Day 3");
-                                list3.add("Temperature: "+json.getJSONObject("current").getString("temp")+" degrees F");
+                                list3.add("Temperature: "+json.getJSONObject("current").getString("temp")+"F");
                                 list3.add("Weather: "+json.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main"));
                                 list3.add("Humidity: "+json.getJSONObject("current").getString("humidity")+"%");
                                 arrayAdapter3.clear();
@@ -180,7 +180,7 @@ public class History extends AppCompatActivity {
                             try {
                                 JSONObject json = new JSONObject(response);
                                 list5.add("Day 5");
-                                list5.add("Temperature: "+json.getJSONObject("current").getString("temp")+" degrees F");
+                                list5.add("Temperature: "+json.getJSONObject("current").getString("temp")+"F");
                                 list5.add("Weather: "+json.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main"));
                                 list5.add("Humidity: "+json.getJSONObject("current").getString("humidity")+"%");
                                 arrayAdapter5.clear();
