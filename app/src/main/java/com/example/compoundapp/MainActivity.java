@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                         RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak");
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please Speak");
                 try {
                     startActivityForResult(intent, REQ_CODE);
                 } catch (ActivityNotFoundException a) {
                     Toast.makeText(getApplicationContext(),
-                            "Sorry your device not supported",
+                            "Error. Device not supported",
                             Toast.LENGTH_SHORT).show();
                 }
             }
