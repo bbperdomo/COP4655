@@ -85,9 +85,37 @@ public class Results extends AppCompatActivity {
             dataList.setEnabled(false);
         }
 
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(mainActivity);
+                        break;
+                    case R.id.action_results:
+                        Intent results = new Intent(getApplicationContext(), Results.class);
+                        startActivity(results);
+                        break;
+                    case R.id.action_map:
+                        Intent map = new Intent(getApplicationContext(), Map.class);
+                        startActivity(map);
+                        break;
+                    case R.id.action_history:
+                        Intent history = new Intent(getApplicationContext(), History.class);
+                        startActivity(history);
+                        break;
+                }
+                return true;
+            }
+        });
+
+
+
         int l1_len;
         l1_len = list1.size();
-        int l2_len = list2.size();
         int i = 0;
         list3 = new ArrayList<>();
 
